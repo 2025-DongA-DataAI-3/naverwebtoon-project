@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    margin:0;
+    background:#e5e5e5;
+    font-family:'Pretendard';
+    padding:40px;
+}
+
+/* ===== 전체 웹툰 페이지 ===== */
+
+.webtoon-page{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+}
+
+/* ===== 웹툰 컷 ===== */
+
+.panel{
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    box-shadow:8px 8px 0 black;
+}
+
+/* 컷 기울기 */
+.panel:nth-child(odd){
+    transform:rotate(-1deg);
+}
+
+.panel:nth-child(even){
+    transform:rotate(1deg);
+}
+
+/* ===== 제목 컷 ===== */
+
+.title-panel{
+    grid-column: span 2;
+    font-size:32px;
+    font-weight:bold;
+}
+
+/* ===== 소제목 ===== */
+
+.subtitle{
+    font-size:22px;
+    margin-bottom:15px;
+    border-bottom:3px solid black;
+    display:inline-block;
+}
+
+/* ===== 리스트 ===== */
+
+.panel ul{
+    line-height:1.8;
+}
+
+/* ===== 데이터 표 영역 ===== */
+
+.data-img{
+    width:100%;
+    border:3px solid black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <!-- 컷1 제목 -->
+    <div class="panel title-panel">
+        2. 사용한 라이브러리 및 활용 데이터셋
+    </div>
+
+    <!-- 컷2 라이브러리 -->
+    <div class="panel">
+
+        <div class="subtitle">사용 라이브러리</div>
+
+        <ul>
+            <img src="./num.png" style="width: 200px;">
+            <img src="./pan.png" style="width: 200px;">
+            <img src="./mat.png" style="width: 200px;">
+            <img src="./sea.png" style="width: 200px;">
+            <img src="./sel.jpg" style="width: 200px;">
+        </ul>
+
+    </div>
+
+    <!-- 컷3 데이터셋 -->
+    <div class="panel">
+
+        <div class="subtitle">활용 데이터셋</div>
+
+        <ul>
+            <h3>본 프로젝트에서는 웹툰 트렌드 분석을 위해 복수의 데이터셋을 수집 및 활용하였다.<br> 각 데이터셋은 연도별 웹툰 현황과 요일별 인기 작품 특성을 비교 분석하기 위한 목적으로 구성되었다</h3>
+            <li>2022 웹툰 데이터 : 1000건</li>
+            <li>2026 웹툰데이터 : 500건</li>
+            <li>2026 웹툰 요일별 랭킹 in 15 데이터 : n건</li>
+            <li>컬럼 구성은 웹툰 제목, 연재 요일, 장르 등의 기본 정보 포함</li>
+        </ul>
+
+    </div>
+
+    <!-- 컷4 표 이미지 -->
+    <div class="panel" style="grid-column: span 2;">
+
+        <img src="./list1.png" class="data-img">
+
+    </div>
+
+</div>
+
+</body>
+</html>
