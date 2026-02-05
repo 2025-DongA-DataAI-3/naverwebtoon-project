@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        padding: 40px;
+    }
+
+    /* ===== 전체 웹툰 페이지 ===== */
+    .webtoon-page {
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    /* ===== 공통 패널 스타일 (삐딱함 유지) ===== */
+    .panel {
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        box-shadow: 10px 10px 0 black;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+
+    /* 홀수/짝수별로 다른 기울기 */
+    .panel:nth-child(odd) { transform: rotate(-1.5deg); }
+    .panel:nth-child(even) { transform: rotate(1.5deg); }
+
+    /* 호버 시 정위치 및 확대 (칸 전체 효과) */
+    .panel:hover {
+        transform: rotate(0deg) scale(1.03) !important;
+        box-shadow: 15px 15px 0 black !important;
+        z-index: 5;
+    }
+
+    /* ===== 제목 컷 ===== */
+    .title-panel {
+        grid-column: span 2;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        transform: rotate(-0.5deg) !important;
+        background: white;
+        box-shadow: 12px 12px 0 black;
+    }
+
+    /* ===== 소제목 ===== */
+    .subtitle {
+        font-size: 22px;
+        margin-bottom: 20px;
+        border-bottom: 4px solid black;
+        display: inline-block;
+        font-weight: 800;
+    }
+
+    /* ===== 라이브러리 로고 배치 (호버 효과 제거) ===== */
+    .library-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .library-grid img {
+        width: 160px;
+        height: auto;
+        /* border: 2px solid #000;  */
+        background: white;
+    }
+
+    /* ===== 데이터셋 텍스트 스타일 ===== */
+    .dataset-info h3 {
+        font-size: 16px;
+        line-height: 1.6;
+        background: #f9f9f9;
+        padding: 15px;
+        border-left: 5px solid black;
+        margin-bottom: 20px;
+    }
+
+    .dataset-info ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dataset-info li {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        padding-left: 30px;
+        position: relative;
+    }
+
+    .dataset-info li::before {
+        content: "📊";
+        position: absolute;
+        left: 0;
+    }
+
+    /* ===== 데이터 표 이미지 (와이드) ===== */
+    .wide-panel {
+        grid-column: span 2;
+        transform: rotate(0.5deg) !important;
+    }
+
+    .data-img {
+        width: 100%;
+        border: 4px solid black;
+        margin-top: 10px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="panel title-panel">
+        2. 사용한 라이브러리 및 활용 데이터셋
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">사용 라이브러리</div>
+        <div class="library-grid">
+            <img src="./num.png" alt="Numpy">
+            <img src="./pan.png" alt="Pandas">
+            <img src="./mat.png" alt="Matplotlib">
+            <img src="./sea.png" alt="Seaborn">
+            <img src="./sel.jpg" alt="Selenium">
+        </div>
+    </div>
+
+    <div class="panel dataset-info">
+        <div class="subtitle">활용 데이터셋</div>
+        <h3>본 프로젝트에서는 웹툰 트렌드 분석을 위해 복수의 데이터셋을 수집 및 활용하였다. 각 데이터셋은 연도별 웹툰 현황과 요일별 인기 작품 특성을 비교 분석하기 위한 목적으로 구성되었다.</h3>
+        <ul>
+            <li>2022 웹툰 데이터 : 1,000건</li>
+            <li>2026 웹툰 데이터 : 500건</li>
+            <li>2026 웹툰 요일별 랭킹 IN 15 : n건</li>
+        </ul>
+    </div>
+
+    <div class="panel wide-panel">
+        <div class="subtitle">컬럼 구성</div>
+        <img src="./list1.png" class="data-img" alt="Column List">
+    </div>
+
+</div>
+
+</body>
+</html>

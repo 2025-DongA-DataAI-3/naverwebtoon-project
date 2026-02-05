@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    margin:0;
+    /* 👉 여기에 질감 배경 이미지 넣으면 됨 */
+    background:#e5e5e5;
+    font-family:'Pretendard';
+    padding:40px;
+}
+
+/* ===== 전체 페이지 ===== */
+
+.webtoon-page{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+    position:relative;
+}
+
+/* ===== 제목 ===== */
+
+.title-panel{
+    grid-column: span 2;
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    font-size:32px;
+    font-weight:bold;
+    box-shadow:10px 10px 0 black;
+    transform:rotate(-0.5deg);
+}
+
+/* ===== 말풍선 ===== */
+
+.speech{
+    grid-column: span 2;
+    background:white;
+    border:4px solid black;
+    padding:20px;
+    border-radius:20px;
+    font-weight:bold;
+    position:relative;
+    box-shadow:6px 6px 0 black;
+}
+
+.speech::after{
+    content:"";
+    position:absolute;
+    bottom:-20px;
+    left:40px;
+    border-width:20px 15px 0;
+    border-style:solid;
+    border-color:black transparent transparent;
+}
+
+/* ===== 패널 ===== */
+
+.panel{
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    aspect-ratio: 1 / 1;
+    display:flex;
+    flex-direction:column;
+    transition:0.2s;
+    position:relative;
+}
+
+/* 컷 연결 화살표 */
+
+/* .panel::before{
+    content:"➜";
+    position:absolute;
+    right:-35px;
+    top:45%;
+    font-size:28px;
+    font-weight:bold;
+} */
+
+/* 마지막 컷 화살표 제거 */
+
+.panel:nth-of-type(5)::before{
+    display:none;
+}
+
+/* 삐뚤 효과 */
+
+.panel:nth-of-type(3){
+    transform:rotate(-1.5deg);
+    box-shadow:9px 11px 0 black;
+}
+
+.panel:nth-of-type(4){
+    transform:rotate(1deg);
+    box-shadow:11px 9px 0 black;
+}
+
+.panel:nth-of-type(5){
+    transform:rotate(-0.7deg);
+    box-shadow:8px 12px 0 black;
+}
+
+.panel:nth-of-type(6){
+    transform:rotate(1.3deg);
+    box-shadow:12px 8px 0 black;
+}
+
+.panel:hover{
+    transform:rotate(0deg) scale(1.03);
+}
+
+/* ===== 소제목 ===== */
+
+.subtitle{
+    font-size:20px;
+    margin-bottom:15px;
+    border-bottom:3px solid black;
+    display:inline-block;
+}
+
+/* ===== 썸네일 ===== */
+
+.thumbnail{
+    margin-top:10px;
+}
+
+.thumbnail img{
+    width:100%;
+    border:3px solid black;
+    border-radius:10px;
+}
+
+.caption{
+    font-size:13px;
+    opacity:0.7;
+    margin-top:5px;
+}
+
+/* ===== 강조 ===== */
+
+.highlight{
+    background:rgba(3,199,90,0.4);
+    padding:2px 6px;
+    font-weight:bold;
+}
+
+.panel ul{
+    line-height:1.8;
+    padding-left:0;
+    list-style:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <!-- 제목 -->
+    <div class="title-panel">
+        1. 연구 배경 및 분석 목표
+    </div>
+
+    <!-- 말풍선 -->
+    <div class="speech">
+        독자는 요일마다 다른 감정 상태에서 웹툰을 소비한다.<br>
+        이러한 소비 패턴은 실제 데이터에서도 나타날까?
+    </div>
+
+    <!-- 컷1 -->
+    <div class="panel">
+        <div class="subtitle">웹툰 소비 문화</div>
+
+        <p>
+        웹툰은 단순 콘텐츠가 아니라
+        <span class="highlight">일상 속 여가 소비 문화</span>로 자리 잡았다.
+        독자들은 상황과 감정 상태에 따라
+        다른 장르를 선택하는 경향을 보인다.
+        </p>
+
+        <div class="thumbnail">
+            <!-- 👉 독자 웹툰 보는 이미지 넣기 -->
+            <img src="./contsThumb_0305185658193.png">
+            <div class="caption">웹툰 소비자</div>
+        </div>
+    </div>
+
+    <!-- 컷2 -->
+    <div class="panel">
+        <div class="subtitle">플랫폼 경쟁 환경</div>
+
+        <p>
+        웹툰 플랫폼은 콘텐츠 확보 경쟁이 심화되며
+        <span class="highlight">사용자 소비 패턴 분석</span>이
+        핵심 전략 요소로 활용되고 있다.
+        </p>
+
+        <div class="thumbnail">
+            <!-- 👉 플랫폼 UI 이미지 -->
+            <img src="./49020_7877_2949.png">
+            <div class="caption">유명 웹툰 플랫폼</div>
+        </div>
+    </div>
+
+    <!-- 컷3 -->
+    <div class="panel">
+        <div class="subtitle">데이터 기반 분석 필요성</div>
+
+        <ul>
+            <li>✔ 요일별 콘텐츠 소비 패턴 분석</li>
+            <li>✔ 장르 트렌드 변화 파악</li>
+            <li>✔ 플랫폼 전략 활용 가능성 탐색</li>
+        </ul>
+
+        <div class="thumbnail">
+            <!-- 👉 장르 아이콘 or 데이터 이미지 -->
+            <img src="./pexels-anna-nekrashevich-6801648.jpg">
+            <div class="caption">웹툰 장르 구조 예시</div>
+        </div>
+    </div>
+
+    <!-- 컷4 -->
+    <div class="panel">
+        <div class="subtitle">분석 목표 및 연구 질문</div>
+
+        <ul>
+            <li>연도별 웹툰 장르 트렌드는 어떻게 변화했는가?</li>
+            <li>요일별 인기 장르는 차이가 존재하는가?</li>
+            <li>콘텐츠 소비 패턴은 플랫폼 전략과 어떤 관련이 있는가?</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
