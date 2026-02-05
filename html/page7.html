@@ -42,16 +42,6 @@
         transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    
-    /* 트러블 슈팅의 개수 2개이상 일때 소제목 달아줌 */
-    .Ptitle {
-    font-size: 18px;      
-    font-weight: 600;     
-    display: inline-block;
-    margin-bottom: 6px;
-    }
-
-
     /* 와이드 패널 */
     .panel-wide1 { 
         grid-column: span 2; 
@@ -67,7 +57,7 @@
     }
     .panel-wide3 { 
         grid-column: span 2; 
-        transform: rotate(1.2deg) !important; 
+        transform: rotate(1.5deg) !important; 
         box-shadow: 12px 12px 0 black !important;
         margin-top: 10px;
     }
@@ -94,6 +84,49 @@
         font-weight: bold; 
     }
 
+    /* 트러블 슈팅의 개수 2개이상 일때 소제목 달아줌 */
+    .Ptitle {
+        font-size: 18px;      
+        font-weight: 600;     
+        display: inline-block;
+        margin-bottom: 6px;
+    }
+
+    /* 팀원별 소개 */
+    .member-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 12px 15px;
+        border: 3px dashed black;
+        background: #f9f9f9;
+        transform: rotate(-0.5deg);
+    }
+
+    .member-avatar {
+        font-size: 36px;
+        transition: 0.3s;
+    }
+
+    .panel:hover .member-avatar {
+        transform: rotate(10deg) scale(1.2);
+    }
+
+    .member-name {
+        font-weight: 900;
+        font-size: 16px;
+    }
+
+    .member-role {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .member-desc {
+        font-size: 13px;
+        color: #444;
+    }
 
 </style>
 </head>
@@ -102,10 +135,20 @@
 
 <div class="webtoon-page">
 
-    <div class="title-panel">5-1. 트러블 슈팅</div>
+    <div class="title-panel">EP7. 완성까지의 시행착오 노트 (트러블 슈팅 기록)</div>
 
     <div class="panel panel-wide1">
-        <div class="subtitle">Flask 서버 이미지 출력오류 해결기 (임주은)</div>
+        <div class="member-box">
+            <div class="member-avatar">👩‍💻</div>
+            <div>
+                <div class="member-name">임주은</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+
+        <div class="subtitle">Flask 서버 이미지 출력오류 해결기</div>
+
         <p>
             <span class="highlight">현상</span><br>
             Flask 서버에서 html 파일을 렌더링할 때 이미지가 화면에 표시되지 않았다.<br>
@@ -116,12 +159,20 @@
             <br><span class="highlight">해결</span><br>
             이미지 파일을 static 폴더로 이동했다.<br>
             url_for('static', filename='파일명')을 사용해 이미지 경로를 수정했다.
-
         </p>
     </div>
     
     <div class="panel panel-wide2">
-        <div class="subtitle">분석 결과를 더 잘 보여주기 위한 시행착오 (황지용)</div>
+        <div class="member-box">
+            <div class="member-avatar">👨‍💻</div>
+            <div>
+                <div class="member-name">황지용</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+
+        <div class="subtitle">분석 결과를 더 잘 보여주기 위한 시행착오</div>
         <p>
             <span class="Ptitle">1. 시각화 가독성 높이기</span><br>
             <span class="highlight">현상</span><br>
@@ -164,14 +215,35 @@
     </div>
     
     <div class="panel panel-wide3">
-        <div class="subtitle"> (김태준)</div>
+        <div class="member-box">
+            <div class="member-avatar">👨‍💻</div>
+            <div>
+                <div class="member-name">김태준</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+        
+        <div class="subtitle"> 분석정확도와 해석깊이를 높이기 위한 개선과정</div>
         <p>
+            <span class="Ptitle">1. 데이터 수집 한계 및 정보 보강</span><br>
             <span class="highlight">현상</span><br>
-            
+            네이버 API가 제공하는 적은량의 정보만으로는 분석에 필요한 세부 속성이 부족하여 심층적인 상관관계 분석이 어려움.
             <br><span class="highlight">원인</span><br>
-            
+            API 제공 데이터의 규격이 한정적이라, 실제 웹상에 존재하는 풍부한 정성적 정보를 포함하지 못함.
             <br><span class="highlight">해결</span><br>
-            
+            Selenium을 활용해 API가 놓치는 세부 정보를 추가 크롤링한 뒤, 이를 기존 데이터셋과 결합하는 데이터 매핑(Data Mapping) 작업을 수행함.<br>
+            이를 통해 수집된 파편화된 정보를 하나의 완성된 데이터로 보강하여 분석의 정확도를 높임.
+        </p>
+        <br><p>
+            <span class="Ptitle">2. 데이터 인사이트 도출의 정성적 한계</span><br>
+            <span class="highlight">현상</span><br>
+            수치화된 분석 결과(빈도, 별점 등)만으로는 사용자의 행동 패턴이나 선택의 이유를 설명하는 데 한계가 있음.
+            <br><span class="highlight">원인</span><br>
+            단순 통계 데이터는 '무엇(What)'은 보여주지만, 유저의 내면적 동기인 '왜(Why)'에 대한 정성적 해석이 결여됨.
+            <br><span class="highlight">해결</span><br>
+            분석 결과에 **심리학 이론(예: 인지 부하 이론, 면죄부 효과 등)**을 접목하여 데이터 해석의 프레임을 구축함.<br>
+            이를 통해 단순 수치 나열에서 벗어나, 유저의 심리적 기저를 관통하는 전략적 인사이트와 설득력 있는 결론을 도출함.
         </p>
     </div>
     
