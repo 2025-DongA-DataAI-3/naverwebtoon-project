@@ -1,0 +1,127 @@
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#e5e5e5;
+    font-family:'Pretendard';
+    padding:40px;
+}
+
+.webtoon-page{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+}
+
+.panel{
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    box-shadow:8px 8px 0 black;
+}
+
+/* 컷 기울기 */
+.panel:nth-child(odd){ transform:rotate(-1deg); }
+.panel:nth-child(even){ transform:rotate(1deg); }
+
+.title-panel{
+    grid-column: span 2;
+    font-size:32px;
+    font-weight:bold;
+    transform: rotate(0deg) !important;
+}
+
+.subtitle{
+    font-size:22px;
+    margin-bottom:15px;
+    border-bottom:3px solid black;
+    display:inline-block;
+}
+
+.panel ul{ line-height:1.8; }
+
+.data-img{
+    width:100%;
+    border:3px solid black;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="panel title-panel">
+        2. 사용한 라이브러리 및 활용 데이터셋
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">사용 라이브러리</div>
+        <ul>
+            <img src="./num.png" style="width: 200px;">
+            <img src="./pan.png" style="width: 200px;">
+            <img src="./mat.png" style="width: 200px;">
+            <img src="./sea.png" style="width: 200px;">
+            <img src="./sel.jpg" style="width: 200px;">
+        </ul>
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">활용 데이터셋</div>
+        <ul>
+            <h3>본 프로젝트에서는 웹툰 트렌드 분석을 위해 복수의 데이터셋을 수집 및 활용하였다.</h3>
+            <li>2022 웹툰 데이터 : 100건 (CSV)</li>
+            <li>2026 웹툰 데이터 : 100건 (CSV)</li>
+            <li>컬럼 구성은 웹툰 제목, 연재 요일, 장르, 별점 등 포함</li>
+        </ul>
+    </div>
+
+    <div class="panel" style="grid-column: span 2;">
+        <img src="./list1.png" class="data-img">
+    </div>
+
+    <div class="panel title-panel" style="margin-top: 50px;">
+        3. 데이터 상세 분석 결과 (Insight 1-5)
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">인사이트 1: 이용 등급 변화</div>
+        <p>2022년 대비 2026년 이용 등급별 비중 변화입니다.</p>
+        <img src="insight1.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">인사이트 2: 요일별 장르 선호도</div>
+        <p>요일과 장르 간의 평균 평점 관계를 분석했습니다.</p>
+        <img src="insight2.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">인사이트 3: 장르 공급 증감</div>
+        <p>어떤 장르가 대세가 되었는지 수치로 확인합니다.</p>
+        <img src="insight3.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">인사이트 4: 연도별 종합 성적</div>
+        <p>전체적인 작품 수와 평점 추이 요약입니다.</p>
+        <img src="insight4.png" class="data-img">
+    </div>
+
+    <div class="panel" style="grid-column: span 2;">
+        <div class="subtitle">핵심 분석: 요일별 장르 분포 및 흥행 1위 작품</div>
+        <p>요일별로 각 장르가 차지하는 비율과 해당 장르에서 가장 높은 평점을 기록한 대표 작품을 추출한 상세 차트입니다.</p>
+        <img src="insight5.png" class="data-img" style="border: none; box-shadow: none;">
+    </div>
+
+</div>
+
+</body>
+</html>

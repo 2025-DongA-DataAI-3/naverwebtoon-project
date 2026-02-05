@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    margin:0;
+    background:#e5e5e5;
+    font-family:'Pretendard';
+    padding:40px;
+}
+
+/* ===== 전체 페이지 ===== */
+
+.webtoon-page{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+}
+
+/* ===== 제목 ===== */
+
+.title-panel{
+    grid-column: span 2;
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    font-size:32px;
+    font-weight:bold;
+    box-shadow:10px 10px 0 black;
+    transform:rotate(-0.5deg);
+}
+
+/* ===== 4컷 패널 ===== */
+
+.panel{
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    aspect-ratio: 1 / 1;
+    display:flex;
+    flex-direction:column;
+    transition:0.2s;
+}
+
+/* 컷마다 삐뚤 느낌 */
+
+.panel:nth-of-type(2){
+    transform:rotate(-1.5deg);
+    box-shadow:9px 11px 0 black;
+}
+
+.panel:nth-of-type(3){
+    transform:rotate(1deg);
+    box-shadow:11px 9px 0 black;
+}
+
+.panel:nth-of-type(4){
+    transform:rotate(-0.7deg);
+    box-shadow:8px 12px 0 black;
+}
+
+.panel:nth-of-type(5){
+    transform:rotate(1.3deg);
+    box-shadow:12px 8px 0 black;
+}
+
+/* 마우스 올리면 살짝 반응 */
+
+.panel:hover{
+    transform:rotate(0deg) scale(1.03);
+}
+
+/* ===== 소제목 ===== */
+
+.subtitle{
+    font-size:20px;
+    margin-bottom:15px;
+    border-bottom:3px solid black;
+    display:inline-block;
+}
+
+/* ===== 리스트 ===== */
+
+.panel ul{
+    line-height:1.8;
+    padding-left:0;
+    list-style:none;
+}
+
+/* ===== 이미지 ===== */
+
+.data-img{
+    width:100%;
+    border:3px solid black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <!-- 제목 -->
+    <div class="title-panel">
+        2. 사용한 라이브러리 및 활용 데이터셋
+    </div>
+
+    <!-- 컷1 -->
+    <div class="panel">
+        <div class="subtitle">사용 라이브러리</div>
+
+        <div>
+            <img src="./num.png" width="80">
+            <img src="./pan.png" width="80">
+            <img src="./mat.png" width="80">
+            <img src="./sea.png" width="80">
+            <img src="./sel.jpg" width="80">
+        </div>
+    </div>
+
+    <!-- 컷2 -->
+    <div class="panel">
+        <div class="subtitle">활용 데이터셋</div>
+
+        <ul>
+            <li>웹툰 트렌드 분석 목적</li>
+            <li>연도별 현황 비교</li>
+            <li>요일별 인기 작품 분석</li>
+        </ul>
+    </div>
+
+    <!-- 컷3 -->
+    <div class="panel">
+        <div class="subtitle">데이터 규모</div>
+
+        <ul>
+            <li>2022 웹툰 : 1000건</li>
+            <li>2026 웹툰 : 500건</li>
+            <li>요일 랭킹 : n건</li>
+        </ul>
+    </div>
+
+    <!-- 컷4 -->
+    <div class="panel">
+        <div class="subtitle">데이터 미리보기</div>
+
+        <img src="./list1.png" class="data-img">
+    </div>
+
+</div>
+
+</body>
+</html>
