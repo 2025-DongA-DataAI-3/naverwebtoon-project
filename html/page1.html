@@ -6,7 +6,16 @@
 <style>
     body {
         margin: 0;
-        background: #e5e5e5;
+        /*  */
+        /* background-image: linear-gradient(rgba(200, 200, 200, 0.6), rgba(200, 200, 200, 0.3)), url("../data/bge6.jpg"); */
+        /* background-repeat: no-repeat; */
+        background-image: url(../data/bge6.png);
+        /* background-size: cover; */
+        
+        /*  */
+        /* background-position: center; */
+        background-color: whitesmoke;
+        
         font-family: 'Pretendard', sans-serif;
         padding: 40px;
     }
@@ -31,7 +40,7 @@
         font-weight: bold;
         text-align: center;
         box-shadow: 12px 12px 0 black;
-        transform: rotate(-0.5deg);
+        transform: rotate(-1.5deg);
     }
 
     /* ===== 말풍선 ===== */
@@ -78,6 +87,7 @@
         box-shadow: 15px 15px 0 black !important;
         z-index: 5;
     }
+    
 
     /* ===== 소제목 (2페이지 스타일) ===== */
     .subtitle {
@@ -135,7 +145,7 @@
 <div class="webtoon-page">
 
     <div class="panel title-panel">
-        1. 연구 배경 및 분석 목표
+        EP1. 우리가 이 데이터에 주목한 이유 (연구 배경 및 목표)
     </div>
 
     <div class="speech">
@@ -152,7 +162,7 @@
         </p>
         <div class="thumbnail">
             <img src="../data/audience.png" alt="Consumer">
-            <div class="caption">웹툰 소비자 분석</div>
+            <div class="caption">웹툰 소비자</div>
         </div>
     </div>
 
@@ -177,7 +187,7 @@
         </ul>
         <div class="thumbnail">
             <img src="../data/genre.png" alt="Genre">
-            <div class="caption">장르별 데이터 구조</div>
+            <div class="caption">장르별 웹툰</div>
         </div>
     </div>
 
@@ -190,6 +200,7 @@
         </ul>
         <div class="thumbnail">
             <img  src="../data/anna.jpg" alt="anna">
+            <div class="caption">데이터 분석</div>
             </div>
         </div>
 

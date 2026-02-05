@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    .webtoon-canvas {
+        width: 850px;
+        background: white;
+        border-left: 6px solid black;
+        border-right: 6px solid black;
+        padding: 80px 50px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+    }
+
+    /* 타이틀 컷 - 삐딱하게 */
+    .title-panel {
+        background: white;
+        border: 6px solid black;
+        padding: 35px;
+        font-size: 36px;
+        font-weight: 900;
+        text-align: center;
+        box-shadow: 15px 15px 0 black;
+        margin-bottom: 20px;
+        transform: rotate(-0.8deg);
+        transition: 0.3s;
+    }
+    .title-panel:hover {
+        transform: rotate(0deg) translateY(-5px);
+        box-shadow: 20px 20px 0 black;
+    }
+
+    /* 말풍선 */
+    .speech-bubble {
+        align-self: flex-start;
+        background: white;
+        border: 4px solid black;
+        padding: 20px 45px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 22px;
+        position: relative;
+        box-shadow: 7px 7px 0 black;
+        margin-left: 30px;
+        transform: rotate(1deg);
+    }
+
+    .speech-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -22px;
+        left: 50px;
+        border-width: 22px 18px 0;
+        border-style: solid;
+        border-color: black transparent transparent;
+    }
+
+    /* 인물 카드 레이아웃 */
+    .char-row {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .char-row.reverse { 
+        flex-direction: row-reverse; 
+        text-align: right; 
+    }
+
+    /* 패널별로 다른 기울기 및 그림자 방향 */
+    .char-row:nth-of-type(1) { transform: rotate(-1.5deg); }
+    .char-row:nth-of-type(2) { transform: rotate(1.2deg); }
+    .char-row:nth-of-type(3) { transform: rotate(-0.8deg); }
+
+    .char-row:hover {
+        transform: rotate(0deg) scale(1.03);
+        z-index: 10;
+    }
+
+    .char-img img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 6px solid black;
+        object-fit: cover;
+        background: #f0f0f0;
+        transition: 0.3s;
+        box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+    }
+
+    .char-row:hover .char-img img {
+        transform: scale(1.1) rotate(5deg);
+        border-color: #03c75a;
+    }
+
+    .char-info {
+        flex: 1;
+        background: white;
+        border: 5px solid black;
+        padding: 30px;
+        border-radius: 25px;
+        box-shadow: 10px 10px 0 black;
+        transition: 0.3s;
+    }
+
+    .char-row:hover .char-info {
+        box-shadow: 15px 15px 0 black;
+        background: #fdfdfd;
+    }
+
+    .char-name {
+        font-size: 26px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        display: block;
+        color: #000;
+    }
+
+    .char-tag {
+        display: inline-block;
+        background: black;
+        color: white;
+        padding: 4px 12px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+    }
+
+    .char-desc {
+        font-size: 17px;
+        line-height: 1.7;
+        color: #222;
+    }
+
+    /* 트러블 슈팅 섹션 - 강조 컷 */
+    .trouble-shooting-cut {
+        border: 7px solid black;
+        background: #fff;
+        padding: 50px;
+        position: relative;
+        margin-top: 20px;
+        transform: rotate(0.5deg);
+        box-shadow: 12px 12px 0 black;
+        transition: 0.3s;
+    }
+
+    .trouble-shooting-cut:hover {
+        transform: rotate(0deg) translateY(-10px);
+        box-shadow: 20px 20px 0 black;
+    }
+
+    .boss-badge {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        background: black;
+        color: white;
+        padding: 10px 25px;
+        font-weight: 900;
+        font-size: 20px;
+        transform: rotate(-5deg);
+        z-index: 2;
+    }
+
+    .boss-title {
+        font-size: 30px;
+        font-weight: 900;
+        margin-bottom: 25px;
+        border-bottom: 5px solid black;
+        display: inline-block;
+    }
+
+    .issue-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .issue-card {
+        border: 3px solid black;
+        padding: 15px;
+        background: #fdfdfd;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.2s;
+        transform: rotate(-1deg);
+    }
+    .issue-card:nth-child(even) { transform: rotate(1deg); }
+
+    .issue-card:hover {
+        background: black;
+        color: white;
+        transform: scale(1.1) rotate(0deg);
+        z-index: 3;
+    }
+
+    .summary-text {
+        margin-top: 30px;
+        font-size: 18px;
+        line-height: 1.6;
+        padding: 20px;
+        background: #eee;
+        border-left: 8px solid black;
+        transform: rotate(-0.5deg);
+    }
+
+</style>
+</head>
+<body>
+
+<div class="webtoon-canvas">
+
+    <div class="title-panel">
+        EP7. 끝나지 않은 도전과 팀원들 (트러블슈팅 및 팀원 소개)
+    </div>
+
+
+    <div class="char-row">
+        <div class="char-img">
+            <img src="./member1.png" alt="팀원1">
+        </div>
+        <div class="char-info">
+            <div class="char-tag">DATA COLLECTOR</div>
+            <span class="char-name">팀원 A | 수집 담당</span>
+            <div class="char-desc">
+                <strong>"크롤링 헌터"</strong><br>
+                네이버 API와 Selenium을 활용해 2,026개의 웹툰 데이터를 단숨에 구축했습니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="char-row reverse">
+        <div class="char-img">
+            <img src="./member2.png" alt="팀원2">
+        </div>
+        <div class="char-info">
+            <div class="char-tag">DATA REFINER</div>
+            <span class="char-name">팀원 B | 전처리 담당</span>
+            <div class="char-desc">
+                <strong>"데이터 정제 장인"</strong><br>
+                결측치와 이상치를 완벽하게 필터링하여 분석의 무결성을 확보했습니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="char-row">
+        <div class="char-img">
+            <img src="./member3.png" alt="팀원3">
+        </div>
+        <div class="char-info">
+            <div class="char-tag">DATA ANALYST</div>
+            <span class="char-name">팀원 C | 시각화 담당</span>
+            <div class="char-desc">
+                <strong>"시각화 연금술사"</strong><br>
+                복잡한 데이터를 한눈에 들어오는 그래프와 인사이트로 연성해냈습니다.
+            </div>
+        </div>
+    </div>
+
+    <div class="trouble-shooting-cut">
+        <div class="boss-badge">QUEST COMPLETED</div>
+        <div class="boss-title">⚔️ 트러블 슈팅 기록</div>
+        <div class="issue-grid">
+            <div class="issue-card">👾 Selenium 크롤링 차단</div>
+            <div class="issue-card">👾 API 데이터 일부 누락</div>
+            <div class="issue-card">👾 데이터 병합 컬럼 불일치</div>
+            <div class="issue-card">👾 평점 데이터 결측 발생</div>
+        </div>
+        <div class="summary-text">
+            <strong>"모든 시련을 극복하고 마침내 데이터 로드맵을 완성했다!"</strong><br>
+            로그 분석과 검증을 통해 분석 환경의 안정성과 일관성을 확보했습니다.
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
