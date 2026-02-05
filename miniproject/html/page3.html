@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        padding: 40px;
+        background-image: url(../static/bge7.png);
+        /* background-size: cover;
+        background-position: center; */
+    }
+
+    .webtoon-page {
+        max-width: 1100px; /* 2페이지와 동일하게 통일 */
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    /* 타이틀 */
+    .title-panel {
+        grid-column: span 2;
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        font-size: 32px;
+        font-weight: bold;
+        box-shadow: 12px 12px 0 black;
+        transform: rotate(-0.8deg);
+        text-align: center;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .title-panel:hover { transform: rotate(0deg) scale(1.02); }
+
+    /* 공통 패널 스타일 */
+    .panel {
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 컷마다 다른 기울기 */
+    .panel:nth-of-type(1) { transform: rotate(-1.3deg); box-shadow: 10px 9px 0 black; }
+    .panel:nth-of-type(2) { transform: rotate(1.1deg); box-shadow: -10px 10px 0 black; }
+
+    .panel:hover {
+        transform: rotate(0deg) scale(1.03) !important;
+        box-shadow: 15px 15px 0 black !important;
+        z-index: 5;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        margin-bottom: 15px;
+        border-bottom: 3px solid black;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .highlight {
+        background: rgba(3, 199, 90, 0.3);
+        padding: 1px 6px;
+        font-weight: bold;
+    }
+
+    .panel ul { line-height: 1.8; padding-left: 0; list-style: none; }
+    .panel li { margin-bottom: 5px; }
+
+    /* ⭐ 이미지 스타일 통일 (라운드 제거) */
+    .panel img {
+        width: 100%;
+        border: 3px solid black;
+        border-radius: 0; /* 라운드 제거 */
+        margin-top: auto; /* 이미지들을 패널 하단으로 정렬 */
+    }
+
+    /* ⭐ 마지막 와이드 패널 수정 */
+    .panel-wide {
+        grid-column: span 2;
+        transform: rotate(0.5deg) !important;
+        box-shadow: 12px 12px 0 black !important;
+    }
+
+    /* 와이드 패널 내부 이미지들을 나란히 배치하는 컨테이너 */
+    .wide-img-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .wide-img-container img {
+        flex: 1; /* 이미지 두 개가 동일한 너비를 가짐 */
+        width: 40%;
+        margin-top: 0;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="panel title-panel">
+        EP3. 데이터를 요리하는 정교한 레시피<br>(전처리 및 분석 프로세스)
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">데이터 수집</div>
+        <p>이번 분석은 <span class="highlight">2022년의 기록</span>과 <span class="highlight">2026 네이버 최신 웹툰 데이터</span>를 꼼꼼히 대조하며 진행했습니다.</p>
+        <ul>
+            <li>✔ 네이버 API 기반 수집</li>
+            <li>✔ Selenium 크롤링으로 데이터 보완</li>
+            <li>✔ 연도별 데이터 맵핑 및 통합</li>
+        </ul>
+        <img src="../static/apiA.png" alt="API 수집 샘플">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">데이터 전처리 및 분석 설계</div>
+        <p>서로 다른 시기의 데이터를 정확하게 비교할 수 있도록, 지저분한 부분은 덜어내고 구조를 탄탄하게 맞추는 과정을 거쳤습니다.</p>
+        <ul>
+            <li>✔ 핵심 컬럼 선별 (title, genre, age, ratings)</li>
+            <li>✔ 평점 기준 내림차순 정렬 후 상위 추출</li>
+            <li>✔ 2026 웹툰 크롤링 데이터와 Merge 수행</li>
+            <li>✔ 누락된 평점을 보완하고, 제목의 오타를 깔끔하게 바로잡기</li>
+        </ul>
+    </div>
+
+    <div class="panel panel-wide" onclick="location.href='./page4.html';" style="cursor: pointer;">
+        <div class="subtitle">최종 분석 데이터 구조</div>
+        <p>정성껏 다듬어진 데이터셋은 이제 웹툰 소비 패턴의 비밀을 풀어낼 완벽한 준비를 마쳤습니다.</p>
+        <ul>
+            <li>✔ 장르 트렌드 변화 분석 | ✔ 요일별 인기 작품 분포 비교</li>
+            <li>✔ 평점 데이터를 통한 콘텐츠 만족도 분석 | ✔ 상위 랭킹 작품 패턴 도출</li>
+        </ul>
+        
+        <div class="wide-img-container" >
+            <img src="../static/dataset.png" alt="데이터셋 구조">
+            <img src="../static/dataset2.png" alt="데이터셋 구조2">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

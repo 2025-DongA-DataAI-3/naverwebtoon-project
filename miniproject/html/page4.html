@@ -1,0 +1,108 @@
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#e5e5e5;
+    font-family:'Pretendard';
+    padding:40px;
+    background-image: url(../static/bge7.png);
+    /* background-size: cover;
+    background-position: center; */
+}
+
+.webtoon-page{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:30px;
+}
+
+.panel{
+    background:white;
+    border:5px solid black;
+    padding:25px;
+    text-align: center;
+    box-shadow:8px 8px 0 black;
+}
+
+/* 컷 기울기 */
+.panel:nth-child(odd){ transform:rotate(-1deg); }
+.panel:nth-child(even){ transform:rotate(1deg); }
+
+.title-panel{
+    grid-column: span 2;
+    font-size:32px;
+    font-weight:bold;
+    transform: rotate(0deg) !important;
+}
+.panel:hover {
+    transform: rotate(0deg) scale(1.03) !important; 
+    box-shadow: 15px 15px 0 black !important;      
+    z-index: 10;                                   
+}
+
+.subtitle{
+    font-size:22px;
+    margin-bottom:15px;
+    border-bottom:3px solid black;
+    display:inline-block;
+}
+
+.panel ul{ line-height:1.8; }
+
+.data-img{
+    width:100%;
+    border:3px solid black;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+
+    <div class="panel title-panel" style="margin-top: 50px;">
+        EP4. 데이터 컷 속에 숨겨진 5가지 진실<br>(데이터가 말해주는 장르의 흐름)
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">핵심분석 1: 이용 등급 변화</div>
+        <p>2022년과 2026년 사이, 독자층의 연령대는 어떻게 변했을까요?</p>
+        <img src="../static/insight1.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">핵심분석 2: 요일별 장르 선호도</div>
+        <p>요일별로 사랑받는 장르가 따로 있을까요? 평점 속에 숨은 독자의 취향을 분석했습니다.</p>
+        <img src="../static/insight2.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">핵심분석 3: 장르 공급 증감</div>
+        <p>지금은 어떤 장르의 전성시대일까요? 장르별 공급의 변화를 수치로 확인해 보세요.</p>
+        <img src="../static/insight3.png" class="data-img">
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">핵심분석 4: 연도별 종합 성적</div>
+        <p>전체적인 작품 수와 평점 데이터를 통해 웹툰 시장의 종합적인 성적을 요약했습니다.</p>
+        <img src="../static/insight4.png" class="data-img">
+    </div>
+
+    <div class="panel" style="grid-column: span 2;" onclick="location.href='./page5.html';" style="cursor: pointer;">
+        <div class="subtitle">핵심 분석: 요일별 장르 분포 및 흥행 1위 작품</div>
+        <p>요일별 장르 분포와 영광의 흥행 1위 작품! 각 요일을 대표하는 장르와 독자들이 가장 높게 평가한 대표작을 한눈에 살펴보세요.</p>
+        <img src="../static/insight5.png" class="data-img" style="border: none; box-shadow: none;">
+    </div>
+
+</div>
+
+</body>
+</html>

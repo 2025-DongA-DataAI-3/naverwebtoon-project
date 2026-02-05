@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        padding: 40px;
+        background-image: url(../static/bge7.png);
+        /* background-size: cover;
+        background-position: center; */
+    }
+
+    .webtoon-page {
+        max-width: 900px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    /* 타이틀 - 호버 시 살짝 위로 이동 */
+    .title-panel {
+        grid-column: span 2;
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        font-size: 32px;
+        font-weight: bold;
+        box-shadow: 10px 10px 0 black;
+        transform: rotate(-0.5deg);
+        text-align: center;
+        transition: 0.3s;
+    }
+    .title-panel:hover {
+        transform: rotate(0deg) translateY(-5px);
+        box-shadow: 15px 15px 0 black;
+    }
+
+    /* 공통 패널 스타일 */
+    .panel {
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 8px 8px 0 black;
+    }
+
+    /* 호버 시 공통적으로 살짝 커지고 그림자 강화 */
+    .panel:hover {
+        transform: scale(1.03) rotate(0deg) !important;
+        box-shadow: 12px 12px 0 black;
+        z-index: 10;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        margin-bottom: 15px;
+        border-bottom: 3px solid black;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    /* ⭐ 새로운 레이아웃: 전면 와이드 컷 */
+    .panel-hero {
+        grid-column: span 2;
+        background: #fff;
+        border: 6px solid black;
+        padding: 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 효과선 느낌 배경 */
+    .panel-hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 100px, rgba(0,0,0,0.02) 100px, rgba(0,0,0,0.02) 101px);
+        pointer-events: none;
+    }
+
+    /* 강조 텍스트 */
+    .highlight { 
+        background: rgba(3, 199, 90, 0.3); 
+        padding: 2px 5px; 
+        font-weight: bold; 
+    }
+    .panel:hover .highlight {
+        background: #03c75a; /* 호버 시 네이버 그린으로 변경 */
+        color: white;
+    }
+
+    /* 리드미컬한 배치 (지그재그) */
+    .step-cut {
+        transform: rotate(-1.5deg);
+    }
+    .step-cut:nth-of-type(even) {
+        transform: rotate(1.5deg);
+    }
+
+    /* 하단 피날레 말풍선 */
+    .final-speech {
+        grid-column: span 2;
+        background: black;
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 20px;
+        position: relative;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .final-speech:hover {
+        transform: scale(1.05);
+        background: #333;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .final-speech::after {
+        content: "";
+        position: absolute;
+        top: -20px;
+        right: 50px;
+        border-width: 0 20px 20px;
+        border-style: solid;
+        border-color: transparent transparent black;
+    }
+
+    .icon-box {
+        font-size: 40px;
+        margin-bottom: 15px;
+        transition: 0.3s;
+    }
+    .panel:hover .icon-box {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    .panel ul {
+        list-style: none;
+        padding: 0;
+        line-height: 1.8;
+    }
+
+    .panel li {
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+        transition: 0.2s;
+    }
+
+    .panel li::before {
+        content: "▶";
+        position: absolute;
+        left: 0;
+        font-size: 12px;
+        top: 2px;
+    }
+
+    .panel li:hover {
+        transform: translateX(5px);
+        font-weight: bold;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="webtoon-page">
+
+    <div class="title-panel">
+        EP6. 데이터가 그리는 웹툰의 내일<br>(기대 효과 및 활용 전략)
+    </div>
+
+    <!-- <div class="panel panel-hero">
+        <div class="icon-box">🚀</div>
+        <div class="subtitle">데이터 기반 전략 수립의 혁신</div>
+        <p style="font-size: 18px; line-height: 1.6;">
+            단순한 감이 아닌 <span class="highlight">정량적 지표</span>를 통해 독자의 취향을 정밀 타격하고,<br> 
+            창작자와 플랫폼이 함께 성장하는 <strong>데이터 에코시스템</strong>을 구축합니다.
+        </p>
+    </div> -->
+
+    <div class="panel step-cut">
+        <div class="icon-box">🏢</div>
+        <div class="subtitle">콘텐츠 제작자 & 플랫폼</div>
+        <ul>
+            <li><strong>골든 타임 선점:</strong> 요일별 트래픽 분석으로 신작 흥행 가능성 극대화</li>
+            <li><strong>리스크 관리:</strong> 평점 추이 분석을 통한 독자 이탈 징후 선제적 파악</li>
+            <li><strong>IP 가치 극대화:</strong> 데이터 기반 유료 결제 전환율 높은 소재 발굴</li>
+        </ul>
+    </div>
+
+    <div class="panel step-cut">
+        <div class="icon-box">✍️</div>
+        <div class="subtitle">작가 & 신규 진입자</div>
+        <ul>
+            <li><strong>블루오션 발굴:</strong> 경쟁은 낮고 수요는 높은 '기회의 요일' 공략</li>
+            <li><strong>데뷔 성공률 제고:</strong> 트렌드 키워드 분석을 통한 소재 선정</li>
+            <li><strong>객관적 지표 확보:</strong> 투고 및 연재 협의 시 근거 자료로 활용</li>
+        </ul>
+    </div>
+
+    <div class="panel step-cut">
+        <div class="icon-box">📱</div>
+        <div class="subtitle">서비스 이용 독자</div>
+        <ul>
+            <li><strong>초개인화된 즐거움:</strong> 탐색의 피로 없이 즐기는 '나만을 위한' 맞춤 추천</li>
+            <li><strong>독자 참여 확대:</strong> 피드백이 작품에 반영되는 능동적 소비 구조</li>
+            <li><strong>콘텐츠 만족도 상승:</strong> 취향에 맞는 고퀄리티 작품 노출 빈도 증가</li>
+        </ul>
+    </div>
+
+    <div class="panel" style="transform: rotate(-0.5deg);" onclick="location.href='./page7';">
+        <div class="icon-box">🤖</div>
+        <div class="subtitle">Next Step: 지능형 분석 확장</div>
+        <p>
+            현재의 정적 분석을 넘어 <span class="highlight">실시간 데이터 파이프라인</span>이 더해진다면, 
+            급변하는 시장을 앞서가는 <strong>AI 기반 트렌드 예측이</strong>현실이 됩니다.
+        </p>
+        <p style="font-size: 18px; line-height: 1.6;">
+            또한 단순한 감이 아닌 <span class="highlight">정량적 지표</span>를 통해 독자의 취향을 정밀 타격하고,<br> 
+            이는 창작자와 플랫폼이 함께 선순환하며 성장하는 <strong>데이터 에코시스템</strong>의 튼튼한 뿌리가 될 것입니다.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

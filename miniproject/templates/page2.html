@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        padding: 40px;
+        background-image: url(../static/bge7.png);
+        /* background-size: cover;
+        background-position: center; */
+    }
+
+    /* ===== 전체 웹툰 페이지 ===== */
+    .webtoon-page {
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    /* ===== 공통 패널 스타일 (삐딱함 유지) ===== */
+    .panel {
+        background: white;
+        border: 5px solid black;
+        padding: 25px;
+        box-shadow: 10px 10px 0 black;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+    }
+
+    /* 홀수/짝수별로 다른 기울기 */
+    .panel:nth-child(odd) { transform: rotate(-1.5deg); }
+    .panel:nth-child(even) { transform: rotate(1.5deg); }
+
+    /* 호버 시 정위치 및 확대 (칸 전체 효과) */
+    .panel:hover {
+        transform: rotate(0deg) scale(1.03) !important;
+        box-shadow: 15px 15px 0 black !important;
+        z-index: 5;
+    }
+
+    /* ===== 제목 컷 ===== */
+    .title-panel {
+        grid-column: span 2;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        transform: rotate(-0.5deg) !important;
+        background: white;
+        box-shadow: 12px 12px 0 black;
+    }
+
+    /* ===== 소제목 ===== */
+    .subtitle {
+        font-size: 22px;
+        margin-bottom: 20px;
+        border-bottom: 4px solid black;
+        display: inline-block;
+        font-weight: 800;
+    }
+
+    /* ===== 라이브러리 로고 배치 (호버 효과 제거) ===== */
+    .library-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .library-grid img {
+        width: 160px;
+        height: auto;
+        /* border: 2px solid #000;  */
+        background: white;
+    }
+
+    /* ===== 데이터셋 텍스트 스타일 ===== */
+    .dataset-info h3 {
+        font-size: 16px;
+        line-height: 1.6;
+        background: #f9f9f9;
+        padding: 15px;
+        border-left: 5px solid black;
+        margin-bottom: 20px;
+    }
+
+    .dataset-info ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .dataset-info li {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 12px;
+        padding-left: 30px;
+        position: relative;
+    }
+
+    .dataset-info li::before {
+        content: "📊";
+        position: absolute;
+        left: 0;
+    }
+
+    /* ===== 데이터 표 이미지 (와이드) ===== */
+    .wide-panel {
+        grid-column: span 2;
+        transform: rotate(0.5deg) !important;
+    }
+
+    .data-img {
+        width: 100%;
+        border: 4px solid black;
+        margin-top: 10px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="panel title-panel">
+        EP2. 분석을 완성할 든든한 도구와 신선한 재료들<br>(사용 도구 및 데이터 소개)
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">사용 라이브러리</div>
+        <div class="library-grid">
+            <img src="../static/num.png" alt="Numpy">
+            <img src="../static/pan.png" alt="Pandas">
+            <img src="../static/mat.png" alt="Matplotlib">
+            <img src="../static/sea.png" alt="Seaborn">
+            <img src="../static/sel.jpg" alt="Selenium">
+        </div>
+    </div>
+
+    <div class="panel dataset-info">
+        <div class="subtitle">활용 데이터셋</div>
+        <h3>웹툰의 흐름을 읽어내기 위해 다양한 시기의 데이터를 꼼꼼히 수집했습니다. 연도별 웹툰 현황부터 요일별 인기 작품의 특징까지, 입체적인 분석을 위한 맞춤형 재료들을 소개합니다.</h3>
+        <ul>
+            <li>과거의 흐름: 2022년 웹툰 데이터 (약 2,000건)</li>
+            <li>현재의 트렌드: 2026년 웹툰 데이터 (약 700건)</li>
+            <li>심층 분석: 2026년 요일별 인기 랭킹 (TOP 15)</li>
+        </ul>
+    </div>
+
+    <div class="panel wide-panel"  onclick="location.href='./page3';" style="cursor: pointer;">
+        <div class="subtitle">데이터 들여다보기 (주요 컬럼)</div>
+        <img src="../static/cul2.png" class="data-img" alt="Column List2">
+        <img src="../static/cul1.png" class="data-img" alt="Column List1">
+        <img src="../static/cul3.png" class="data-img" alt="Column List3">
+    </div>
+
+</div>
+
+</body>
+</html>
