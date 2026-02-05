@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body { margin: 0; background: #e5e5e5; font-family: 'Pretendard', sans-serif; padding: 40px; }
+    
+    /* 웹툰 페이지 전체 레이아웃 */
+    .webtoon-page { 
+        max-width: 1000px; 
+        margin: auto; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px; 
+    }
+    
+    /* 타이틀 - 삐딱하게 */
+    .title-panel { 
+        grid-column: span 2; 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        font-size: 32px; 
+        font-weight: bold; 
+        box-shadow: 12px 12px 0 black; 
+        text-align: center; 
+        transform: rotate(-1deg);
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .title-panel:hover { transform: rotate(0deg) scale(1.02); }
+
+    /* 독백형 말풍선 */
+    .monologue { 
+        grid-column: span 2; 
+        background: white; 
+        border: 4px solid black; 
+        padding: 20px; 
+        border-radius: 50px; 
+        font-weight: bold; 
+        text-align: center; 
+        box-shadow: 6px 6px 0 black; 
+        margin: 20px 0; 
+        font-size: 18px; 
+        transform: rotate(0.5deg);
+    }
+
+    /* 공통 패널 스타일 */
+    .panel { 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative; 
+    }
+
+    /* 각 컷마다 다른 회전값과 그림자 방향 부여 */
+    .panel:nth-of-type(1) { transform: rotate(-1.5deg); box-shadow: 10px 8px 0 black; }
+    .panel:nth-of-type(2) { transform: rotate(1.2deg); box-shadow: -10px 10px 0 black; }
+    .panel:nth-of-type(3) { transform: rotate(1.8deg); box-shadow: 11px 9px 0 black; }
+    .panel:nth-of-type(4) { transform: rotate(-1.3deg); box-shadow: -8px 11px 0 black; }
+    
+    /* 와이드 패널 (5번 결과) */
+    .panel-wide { 
+        grid-column: span 2; 
+        transform: rotate(0.5deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+
+    /* 호버 시 정위치 및 확대 */
+    .panel:hover { 
+        transform: rotate(0deg) scale(1.05) !important; 
+        box-shadow: 15px 15px 0 black !important; 
+        z-index: 5; 
+    }
+
+    .subtitle { 
+        font-size: 22px; 
+        font-weight: 900; 
+        margin-bottom: 15px; 
+        border-bottom: 4px solid black; 
+        display: inline-block; 
+    }
+    
+    .highlight { 
+        background: #ffeb3b; 
+        padding: 2px 5px; 
+        font-weight: bold; 
+    }
+
+    /* 요일별 그리드 섹션 */
+    .day-grid { 
+        grid-column: span 2; 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 15px; 
+        background: #000; 
+        padding: 25px; 
+        border: 5px solid black; 
+        transform: rotate(-0.5deg);
+        box-shadow: 15px 15px 0 rgba(0,0,0,0.2);
+        margin-top: 20px;
+    }
+    
+    .day-card { 
+        background: white; 
+        padding: 15px; 
+        border: 3px solid black; 
+        transition: 0.3s ease;
+        transform: rotate(1.5deg);
+    }
+    .day-card:nth-child(even) { transform: rotate(-1.5deg); }
+
+    .day-card:hover { 
+        transform: translateY(-20px) rotate(0deg) scale(1.05); 
+        background: #f8f8f8; 
+        z-index: 2; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .day-name { 
+        font-weight: 900; 
+        font-size: 20px; 
+        display: block; 
+        margin-bottom: 10px; 
+        text-decoration: underline; 
+        color: #000;
+    }
+
+    small { color: #666; font-weight: bold; }
+
+</style>
+</head>
+<body>
+
+<div class="webtoon-page">
+
+    <div class="title-panel">4. 데이터가 말해주는 웹툰 시장의 진실</div>
+
+    <div class="panel">
+        <div class="subtitle">1. 독자의 성숙과 장르의 심화</div>
+        <p>전체 이용가는 감소하고 <span class="highlight">12/15/18세 이용가</span>가 크게 증가했습니다. 독자층이 성숙해지며 더 자극적이고 깊이 있는 소재가 주류를 이룹니다.</p>
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">2. 스낵컬쳐와 숏폼의 습격</div>
+        <p>긴 호흡의 드라마는 하락하고, 가볍게 소비되는 <span class="highlight">일상/에피소드</span>가 약진했습니다. 이는 현대의 숏폼 트렌드와 궤를 같이 합니다.</p>
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">3. 철옹성: 로맨스 & 판타지</div>
+        <p>유행과 상관없이 로맨스와 판타지는 여전히 시장 지배력을 유지하는 <span class="highlight">스테디셀러</span>로서 건재함을 과시했습니다.</p>
+    </div>
+
+    <div class="panel">
+        <div class="subtitle">4. 95%의 교체율, 무한경쟁</div>
+        <p>4년 사이 상위권 작품의 <span class="highlight">95% 이상이 교체</span>되었습니다. 신작의 진입이 활발하며 트렌드 변화 속도가 매우 빠릅니다.</p>
+    </div>
+
+    <div class="panel panel-wide">
+        <div class="subtitle">5. 더 냉정해진 독자의 눈 (별점 표준편차 증가)</div>
+        <p>평균 별점은 미세하게 하락했으나 표준편차는 커졌습니다. 독자들의 평가가 과거보다 <span class="highlight">다양해지고 냉정해졌음</span>을 시사합니다.</p>
+    </div>
+
+    <div class="monologue" style="background: #000; color: #fff; box-shadow: 8px 8px 0 #333;">
+        "콘텐츠 소비는 <span style="color:#03c75a">시간적 맥락</span>에 따른 심리 상태와 밀접하게 연결되어 있다."
+    </div>
+
+    <div class="day-grid">
+        <div class="day-card">
+            <span class="day-name">월요일</span>
+            <small>#피로누적 #저관여</small>
+            <p>의사결정 피로가 극에 달해 <strong>단순하고 직관적인</strong> 콘텐츠를 선호합니다.</p>
+        </div>
+        <div class="day-card">
+            <span class="day-name">수요일</span>
+            <small>#정서안정 #몰입</small>
+            <p>감정 몰입도가 상승하며 <strong>캐릭터와의 동일시</strong> 현상이 강화되는 구간입니다.</p>
+        </div>
+        <div class="day-card">
+            <span class="day-name">금요일</span>
+            <small>#보상소심리 #프리미엄</small>
+            <p>주간 보상 심리로 인해 <strong>고관여 콘텐츠 및 유료 결제</strong> 수용도가 높아집니다.</p>
+        </div>
+        <div class="day-card">
+            <span class="day-name">주말</span>
+            <small>#여유 #구독전환</small>
+            <p>시간적 여유로 인해 <strong>감정 중심 의사결정</strong>과 구독 전환율이 최대치에 달합니다.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
