@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body { margin: 0; background: #e5e5e5; font-family: 'Pretendard', sans-serif; padding: 40px; }
+    
+    /* 웹툰 페이지 전체 레이아웃 */
+    .webtoon-page { 
+        max-width: 1000px; 
+        margin: auto; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px; 
+    }
+    
+    /* 타이틀 - 삐딱하게 */
+    .title-panel { 
+        grid-column: span 2; 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        font-size: 32px; 
+        font-weight: bold; 
+        box-shadow: 12px 12px 0 black; 
+        text-align: center; 
+        transform: rotate(-1deg);
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .title-panel:hover { transform: rotate(0deg) scale(1.02); }
+
+    /* 공통 패널 스타일 */
+    .panel { 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    
+    /* 트러블 슈팅의 개수 2개이상 일때 소제목 달아줌 */
+    .Ptitle {
+    font-size: 18px;      
+    font-weight: 600;     
+    display: inline-block;
+    margin-bottom: 6px;
+    }
+
+
+    /* 와이드 패널 */
+    .panel-wide1 { 
+        grid-column: span 2; 
+        transform: rotate(1deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+    .panel-wide2 { 
+        grid-column: span 2; 
+        transform: rotate(-1.2deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+    .panel-wide3 { 
+        grid-column: span 2; 
+        transform: rotate(1.2deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+
+
+    /* 호버 시 정위치 및 확대 */
+    .panel:hover { 
+        transform: rotate(0deg) scale(1.05) !important; 
+        box-shadow: 15px 15px 0 black !important; 
+        z-index: 5; 
+    }
+
+    .subtitle { 
+        font-size: 22px; 
+        font-weight: 900; 
+        margin-bottom: 15px; 
+        border-bottom: 4px solid black; 
+        display: inline-block; 
+    }
+    
+    .highlight { 
+        background: hsl(128, 100%, 54%); 
+        padding: 2px 5px; 
+        font-weight: bold; 
+    }
+
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="title-panel">5-1. 트러블 슈팅</div>
+
+    <div class="panel panel-wide1">
+        <div class="subtitle">Flask 서버 이미지 출력오류 해결기 (임주은)</div>
+        <p>
+            <span class="highlight">현상</span><br>
+            Flask 서버에서 html 파일을 렌더링할 때 이미지가 화면에 표시되지 않았다.<br>
+            HTML 파일을 단독 실행했을 때와 다른 동작을 보여 화면 구현에 어려움을 겪었다.<br>
+            <br><span class="highlight">원인</span><br>
+            Flask는 이미지와 같은 정적 파일을 static 폴더에서만 제공한다.<br>
+            HTML에 작성한 상대경로를 그대로 사용해 서버가 이미지를 찾지 못했다.<br>
+            <br><span class="highlight">해결</span><br>
+            이미지 파일을 static 폴더로 이동했다.<br>
+            url_for('static', filename='파일명')을 사용해 이미지 경로를 수정했다.
+
+        </p>
+    </div>
+    
+    <div class="panel panel-wide2">
+        <div class="subtitle">분석 결과를 더 잘 보여주기 위한 시행착오 (황지용)</div>
+        <p>
+            <span class="Ptitle">1. 시각화 가독성 높이기</span><br>
+            <span class="highlight">현상</span><br>
+            단순 표(Table) 형식의 데이터 나열로 트렌드 파악이 어려움.
+            <br><span class="highlight">원인</span><br>
+            데이터 양(15개 장르/요일별 작품)에 비해 시각적 도구가 단조로움.
+            <br><span class="highlight">해결</span><br>
+            도넛차트(비중), 히트맵(평균 별점), 서브플롯(요일별 상세 분석) 등 데이터 성격에 맞는 다양한 차트를 활용해 직관성 극대화.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">2. 폰트 호환 및 이모지 깨짐 오류</span><br>
+            <span class="highlight">현상</span><br>
+            그래프 저장 시 트로피 이모지(🏆)가 깨지며 Glyph 127942 경고 발생.
+            <br><span class="highlight">원인</span><br>
+            기본 폰트(Malgun Gothic)가 특정 특수문자 및 이모지 렌더링을 지원하지 않음.
+            <br><span class="highlight">해결</span><br>
+            이모지를 삭제하고 [1위] 텍스트와 **강조색(Red)**을 사용하여 안정적인 출력 환경 구축.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">3. Pandas 라이브러리 경고 (FutureWarning)</span><br>
+            <span class="highlight">현상</span><br>
+            범주형 데이터 그룹화 시 최신 버전 호환성 경고 발생.
+            <br><span class="highlight">원인</span><br>
+            groupby 함수 내 observed 파라미터의 기본값 정책 변경.
+            <br><span class="highlight">해결</span><br>
+            **observed=False**를 명시적으로 선언하여 코드의 안정성 및 버전 호환성 확보.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">4. 웹 페이지 리소스 렌더링 지연</span><br>
+            <span class="highlight">현상</span><br>
+            분석 코드 재실행 후에도 HTML 페이지에 이전 그래프가 노출됨.
+            <br><span class="highlight">원인</span><br>
+            파일명 중복(insight5.png) 및 브라우저 이미지 캐싱(Caching).
+            <br><span class="highlight">해결</span><br>
+            이미지 저장 파일명을 통합하고, 브라우저 **강력 새로고침(Ctrl+F5)**을 통해 캐시를 강제 갱신하여 해결.
+        </p>
+    </div>
+    
+    <div class="panel panel-wide3">
+        <div class="subtitle"> (김태준)</div>
+        <p>
+            <span class="highlight">현상</span><br>
+            
+            <br><span class="highlight">원인</span><br>
+            
+            <br><span class="highlight">해결</span><br>
+            
+        </p>
+    </div>
+    
+
+</div>
+
+</body>
+</html>
