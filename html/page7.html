@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body { margin: 0; background: #e5e5e5; font-family: 'Pretendard', sans-serif; padding: 40px; 
+        background-image: url(../data/bge7.png);
+        /* background-size: cover;
+        background-position: center; */
+    }
+    
+    /* 웹툰 페이지 전체 레이아웃 */
+    .webtoon-page { 
+        max-width: 1000px; 
+        margin: auto; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px; 
+    }
+    
+    /* 타이틀 - 삐딱하게 */
+    .title-panel { 
+        grid-column: span 2; 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        font-size: 32px; 
+        font-weight: bold; 
+        box-shadow: 12px 12px 0 black; 
+        text-align: center; 
+        transform: rotate(-1deg);
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .title-panel:hover { transform: rotate(0deg) scale(1.02); }
+
+    /* 공통 패널 스타일 */
+    .panel { 
+        background: white; 
+        border: 5px solid black; 
+        padding: 25px; 
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* 와이드 패널 */
+    .panel-wide1 { 
+        grid-column: span 2; 
+        transform: rotate(1deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+    .panel-wide2 { 
+        grid-column: span 2; 
+        transform: rotate(-1.2deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+    .panel-wide3 { 
+        grid-column: span 2; 
+        transform: rotate(1.5deg) !important; 
+        box-shadow: 12px 12px 0 black !important;
+        margin-top: 10px;
+    }
+
+
+    /* 호버 시 정위치 및 확대 */
+    .panel:hover { 
+        transform: rotate(0deg) scale(1.05) !important; 
+        box-shadow: 15px 15px 0 black !important; 
+        z-index: 5; 
+    }
+
+    .subtitle { 
+        font-size: 22px; 
+        font-weight: 900; 
+        margin-bottom: 15px; 
+        border-bottom: 4px solid black; 
+        display: inline-block; 
+    }
+    
+    .highlight { 
+        background: hsl(128, 100%, 54%); 
+        padding: 2px 5px; 
+        font-weight: bold; 
+    }
+
+    /* 트러블 슈팅의 개수 2개이상 일때 소제목 달아줌 */
+    .Ptitle {
+        font-size: 18px;      
+        font-weight: 600;     
+        display: inline-block;
+        margin-bottom: 6px;
+    }
+
+    /* 팀원별 소개 */
+    .member-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 12px 15px;
+        border: 3px dashed black;
+        background: #f9f9f9;
+        transform: rotate(-0.5deg);
+    }
+
+    .member-avatar {
+        font-size: 36px;
+        transition: 0.3s;
+    }
+
+    .panel:hover .member-avatar {
+        transform: rotate(10deg) scale(1.2);
+    }
+
+    .member-name {
+        font-weight: 900;
+        font-size: 16px;
+    }
+
+    .member-role {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .member-desc {
+        font-size: 13px;
+        color: #444;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="webtoon-page">
+
+    <div class="title-panel">EP7. 완성까지의 시행착오 노트 (성장을 위한 트러블 슈팅 기록)</div>
+
+    <div class="panel panel-wide1">
+        <div class="member-box">
+            <div class="member-avatar">👩‍💻</div>
+            <div>
+                <div class="member-name">임주은</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+
+        <div class="subtitle">(Flask 서버 리소스 오류)</div>
+
+        <p>
+            <span class="highlight">현상</span><br>
+            Flask 서버를 통해 HTML 렌더링 시, 로컬 실행과 달리 이미지가 화면에 출력되지 않는 현상 발생.<br>
+            <br><span class="highlight">원인</span><br>
+            Flask 프레임워크의 정적 파일 관리 규약(static 폴더 참조)을 무시하고 일반 상대 경로를 사용함에 따른 참조 오류.<br>
+            <br><span class="highlight">해결</span><br>
+            모든 이미지 자원을 static 디렉토리로 구조화하고, url_for 함수를 도입하여 서버 환경에 최적화된 동적 경로로 재설정함.<br>
+        </p>
+    </div>
+    
+    <div class="panel panel-wide2">
+        <div class="member-box">
+            <div class="member-avatar">👨‍💻</div>
+            <div>
+                <div class="member-name">황지용</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+
+        <div class="subtitle">분석 결과를 더 잘 보여주기 위한 시행착오</div>
+        <p>
+            <span class="Ptitle">1. 시각화 직관성</span><br>
+            <span class="highlight">현상</span><br>
+            단순 표(Table) 위주의 데이터 나열로 인해 방대한 웹툰 트렌드를 한눈에 파악하기 어려움.
+            <br><span class="highlight">원인</span><br>
+            분석 대상(15개 장르 및 요일별 랭킹)의 복잡도에 비해 시각적 전달 도구가 단조로워 인사이트 도출이 지연됨.
+            <br><span class="highlight">해결</span><br>
+            해결: 데이터 성격에 맞춰 도넛 차트(비중), 히트맵(평점), 서브플롯(상세 분석) 등 다각적 시각화 도구를 도입하여 직관성을 극대화함.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">2. 폰트 및 이모지 호환성</span><br>
+            <span class="highlight">현상</span><br>
+            그래프 저장 및 출력 과정에서 특정 이모지(🏆)가 렌더링되지 않고 런타임 경고(Glyph 127942)가 발생함.
+            <br><span class="highlight">원인</span><br>
+            사용 중인 기본 폰트(Malgun Gothic)가 고해상도 이모지 및 특수 유니코드 렌더링을 지원하지 않음.
+            <br><span class="highlight">해결</span><br>
+            불안정한 이모지 요소를 제거하고, 텍스트 태그와 명확한 강조색(Point Color)을 활용하여 출력 안정성을 확보함.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">3. 라이브러리 경고 대응</span><br>
+            <span class="highlight">현상</span><br>
+            범주형 데이터의 그룹화 연산 시 최신 Pandas 버전에서의 호환성 경고(FutureWarning) 발생.
+            <br><span class="highlight">원인</span><br>
+            groupby 함수의 observed 파라미터 기본값 정책 변경에 따른 잠재적 오류 가능성 감지.
+            <br><span class="highlight">해결</span><br>
+            observed=False 옵션을 명시적으로 선언하여 데이터 연산의 정확성을 보장하고 버전 업데이트에 대비함.
+        </p>
+        <br>
+        <p>
+            <span class="Ptitle">4. 리소스 캐싱 문제</span><br>
+            <span class="highlight">현상</span><br>
+            분석 코드 수정 및 이미지 갱신 후에도 웹 페이지 상에 이전 결과물이 지속적으로 노출되는 현상.
+            <br><span class="highlight">원인</span><br>
+            동일한 파일명 사용으로 인해 브라우저가 서버의 최신본을 확인하지 않고 로컬 캐시 데이터를 우선 로딩함.
+            <br><span class="highlight">해결</span><br>
+            파일 관리 체계를 정비하고, 브라우저 강제 새로고침(Ctrl+F5)을 통해 캐시 데이터를 강제 갱신함으로써 데이터 불일치를 해결함.
+        </p>
+    </div>
+    
+    <div class="panel panel-wide3">
+        <div class="member-box">
+            <div class="member-avatar">👨‍💻</div>
+            <div>
+                <div class="member-name">김태준</div>
+                <div class="member-role">Flask · 웹 구현</div>
+                <div class="member-desc">서버 구조 이해 & 정적 파일 문제 해결</div>
+            </div>
+        </div>
+        
+        <div class="subtitle"> 분석정확도와 해석깊이를 높이기 위한 개선과정</div>
+        <p>
+            <span class="Ptitle">1. 데이터 수집의 한계</span><br>
+            <span class="highlight">현상</span><br>
+            기본 API가 제공하는 정량적 정보만으로는 웹툰의 세부적인 특징을 심층 분석하기에 정보량이 부족함.
+            <br><span class="highlight">원인</span><br>
+            플랫폼 제공 API의 규격화된 데이터 포맷만으로는 실제 서비스상의 정성적인 정보들을 포착할 수 없음.
+            <br><span class="highlight">해결</span><br>
+            Selenium 기반의 크롤링 기법을 병행하여 세부 속성을 추가 확보하고, 데이터 매핑(Mapping)을 통해 분석용 데이터셋의 밀도를 높임.
+        </p>
+        <br><p>
+            <span class="Ptitle">2. 데이터 해석의 깊이</span><br>
+            <span class="highlight">현상</span><br>
+            통계 수치 기반의 결과 도출만으로는 유저의 행동 동기나 심리적 선택 이유를 설명하는 데 한계가 있음.
+            <br><span class="highlight">원인</span><br>
+            정량적 데이터는 결과(What)를 보여주지만, 유저의 내면적 심리 기제인 원인(Why)에 대한 해석은 결여되어 있음.
+            <br><span class="highlight">해결</span><br>
+            분석 결과에 심리학 이론(인지 부하, 면죄부 효과 등)을 분석 프레임으로 접목하여, 수치를 넘어선 전략적 인사이트와 설득력 있는 결론을 도출함.
+        </p>
+    </div>
+    
+
+</div>
+
+</body>
+</html>
