@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Ending</title>
+<style>
+    /* 기존 스타일 계승 */
+    body {
+        margin: 0;
+        background: #e5e5e5;
+        font-family: 'Pretendard', sans-serif;
+        padding: 40px;
+        background-image: url(../static/bge7.png);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    /* 전체 컨테이너 */
+    .webtoon-page {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* 엔딩 메인 패널 */
+    .panel {
+        background: white;
+        border: 6px solid black;
+        padding: 60px 20px;
+        box-shadow: 15px 15px 0 black;
+        position: relative;
+        text-align: center;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* 마지막화 느낌의 삐딱한 연출 */
+    .end-panel {
+        transform: rotate(-1deg);
+        background: linear-gradient(to bottom, #fff, #f0f0f0);
+    }
+
+    .end-panel:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    /* THE END 문구 */
+    .the-end-text {
+        font-size: 80px;
+        font-weight: 900;
+        color: black;
+        margin: 0;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+    }
+
+    .project-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    /* 첫 페이지로 버튼 (웹툰 하단 버튼 스타일) */
+    .home-button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-home {
+        display: inline-block;
+        padding: 18px 40px;
+        font-size: 22px;
+        font-weight: 800;
+        color: white;
+        background: #00dc64; /* 네이버웹툰 시그니처 그린 */
+        border: 4px solid black;
+        text-decoration: none;
+        box-shadow: 8px 8px 0 black;
+        transition: 0.2s;
+        transform: rotate(1deg);
+    }
+
+    .btn-home:hover {
+        transform: rotate(0deg) translateY(-5px);
+        box-shadow: 12px 12px 0 black;
+        background: #00ff73;
+    }
+
+    .btn-home:active {
+        transform: translateY(2px);
+        box-shadow: 4px 4px 0 black;
+    }
+
+    /* 하단 작가 정보 스타일 */
+    .author-info {
+        margin-top: 40px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        border-top: 2px solid black;
+        padding-top: 20px;
+        display: inline-block;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="webtoon-page">
+    <div class="panel end-panel">
+        <h1 class="the-end-text">- THE END -</h1>
+        <p class="project-title">2022 - 2026 Naver Webtoon Analysis Project</p>
+        
+        <div class="author-info">
+            감상해주셔서 감사합니다! <br>
+        </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="page0.html" class="btn-home">첫 페이지로 돌아가기</a>
+    </div>
+</div>
+
+</body>
+</html>
